@@ -1,0 +1,39 @@
+type Query {
+    listEmployees(page: Int, size: Int, sortBy: String, sortDir: String): EmployeePage
+}
+
+type EmployeePage {
+    content: [Employee]
+    totalPages: Int
+    totalElements: Int
+    number: Int
+    size: Int
+}
+
+type Employee {
+    id: ID
+    name: String
+    age: Int
+    empClass: String
+    subjects: [String]
+    attendance: Float
+}
+
+type Mutation {
+    addEmployee(
+        name: String,
+        age: Int,
+        employeeClass: String,
+        subjects: String,
+        attendance: Int
+    ): Employee
+    updateEmployee(
+        id: ID,
+        name: String,
+        age: Int,
+        employeeClass: String,
+        subjects: String,
+        attendance: Int
+    ): Employee
+    deleteEmployee(id: ID): Boolean
+}
